@@ -6,13 +6,10 @@ import time
 data_dir = "../logic_constraints"
 PRACMLN_HOME = "."
 def inference_surgeme():
-    # p = PRACMLN_HOME+'/examples/smokers/smokers.pracmln'
     mln = MLN(mlnfile=data_dir+'/gym_pickplace_trained.mln',
               grammar='StandardGrammar')
     
-
     db = Database(mln, dbfile=data_dir+'/gym_pickplace.db')
-    # for method in ('EnumerationAsk', 'MC-SAT', 'WCSPInference', 'GibbsSampler'):
     for method in ['GibbsSampler']:
         # for multicore in (False, True):
         print('=== INFERENCE TEST:', method, '===')
@@ -24,8 +21,6 @@ def inference_surgeme():
               multicore=True).run()
     
 def learning_surgeme(mlnfile, dbfile):
-    # p = PRACMLN_HOME+'/examples/smokers/smokers.pracmln'
-    # mln = MLN(mlnfile=('%s:smoking.mln' % p), grammar='StandardGrammar')
     mln = MLN(mlnfile=mlnfile, grammar='StandardGrammar') # .mln file is the domain knowledge (FOL - verify)
     mln.write()
     db = Database(mln, dbfile=dbfile)
@@ -60,8 +55,5 @@ if __name__ == '__main__':
     ROBOT = "Gym" # Gym/Taurus
     runall(ROBOT=ROBOT)
     
-    # for f in mln.formulas:
-    #   print (f)
-    #   f.print_structure()
 
 

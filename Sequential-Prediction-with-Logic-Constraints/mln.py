@@ -45,11 +45,7 @@ def mln_analysis(train_features, test_features):
     # current_arms_distance arm_dist lgs left_gs rgs right_gs labels
     F = ["f1"] # forumulas
     formula2class = {}
-    # training learn class probabilty under each true form of the formula
-
-    # testing/inference: take average (weighted?) of all the true forumlas
-
-    # why mln work: ML cannot predict where it has less examples, thus when data is less MLN/constraints should give the accuracy a boost, increase transfer learning accuracy as MLN is invarient of any particular domain.
+    
     arms_dist = train_features[:, 1]
     left_gs = train_features[:, 3]
     right_gs = train_features[:, 5]
@@ -58,11 +54,10 @@ def mln_analysis(train_features, test_features):
     print(arms_dist[100:120])
     print(left_gs[100:120])
     print(right_gs[100:120])
-    # use grippe status here
+    # use gripper status here
     print(labels[100:120])
     labelcount = [0] * 7
     for m in labels:
-        # print(int(m))
         labelcount[int(m)] += 1
     print (labelcount)
     print(labelcount[0]+labelcount[1]+labelcount[2]+labelcount[3]+labelcount[4]+labelcount[5]+labelcount[6])
@@ -84,9 +79,6 @@ def mln_analysis(train_features, test_features):
     for i in range(len(labels)):
         label = int(labels[i])
         fol = (left_gs[i], right_gs[i])
-        # if (i+1) % int(len(labels)/2) == 0:
-        #     print(formula2class)
-        #     print(len(formula2class))
         if fol in formula2class:
             truecount, falsecount = formula2class[fol]
             truecount[label] += 1 # incease true
@@ -122,9 +114,6 @@ def mln_analysis(train_features, test_features):
 
     print(len(formula2class_prob))
     print(formula2class_prob)
-    
-    # for fol in formula2class_prob:
-    #   print(fol, formula2class_prob[fol])
 
     # inference / testing
     arms_dist = test_features[:, 1]
@@ -357,12 +346,8 @@ def mln_inference_single(formula2class_prob, single_row_feature, debug=True):
     classweight_combined_forlogprob = classweight_combined + 1 # 1 to remove zero prob, smooting
 
     sumval = np.sum(classweight_combined_forlogprob)
-    # if maxval > 0:
 
     classprobability = classweight_combined_forlogprob / sumval
-    # classprobability = np.asarray(classprobability)
-    # print(type(classprobability))
-    # classprobability = classprobability.astype(float)
     classprobability = np.log(classprobability)
     pred_label = np.argmax(classweight_combined)
     
@@ -372,7 +357,7 @@ def pracmln_inference_single(formula_weight, single_row_feature, debug=True):
     arms_dist = int(single_row_feature[1])
     left_gs = int(single_row_feature[3])
     right_gs = int(single_row_feature[5])
-    # labels = single_row_feature[:, 6] - 1
+
     # formula
     formula1 = "arms_dist_"+str(arms_dist)
     formula2 = "left_gs_"+str(left_gs)
@@ -392,19 +377,13 @@ def pracmln_inference_single(formula_weight, single_row_feature, debug=True):
     for i in range(len(classweight)):
         if classweight[i] < 0:
             classweight[i] = 0.0
-    # print (classweight)
-    # print (formulas)
     classweight_combined = np.asarray(classweight) # make it numpy
 
-    
     # make it probability
     classweight_combined_forlogprob = classweight_combined + 1 # 1 to remove zero prob, smooting
     sumval = np.sum(classweight_combined_forlogprob)
     # if maxval > 0:
     classprobability = classweight_combined_forlogprob / sumval
-    # classprobability = np.asarray(classprobability)
-    # print(type(classprobability))
-    # classprobability = classprobability.astype(float)
     classprobability = np.log(classprobability)
     pred_label = np.argmax(classweight_combined)
     
@@ -435,37 +414,24 @@ def pracmln_inference_single2(formula_weight, single_row_feature, debug=True):
     # make all positive, ignore negative value and make it to zero
     minweight = min(classweight)
     for i in range(len(classweight)):
-        # if classweight[i] < 0:
-        #     classweight[i] = 0.0
         classweight[i] = classweight[i] + (-1 * minweight) # make it minimum to 0.
-    # print ("After normalize",classweight)
-    # print(fweights_list)
-    # print (formulas)
     classweight_combined = np.asarray(classweight) # make it numpy
 
     
     # make it probability
     classweight_combined_forlogprob = classweight_combined + 1 # 1 to remove zero prob, smooting
     sumval = np.sum(classweight_combined_forlogprob)
-    # if maxval > 0:
+
     classprobability = classweight_combined_forlogprob / sumval
-    # classprobability = np.asarray(classprobability)
-    # print(type(classprobability))
-    # classprobability = classprobability.astype(float)
     classprobability = np.log(classprobability)
     pred_label = np.argmax(classweight_combined)
     
     return pred_label, classweight_combined, classprobability
 def pracmln_inference_single_gym(formula_weight, single_row_feature, debug=True):
     # print("=============")
-    # print(single_row_feature)
-    # print(formula_weight)
-    gs = int(single_row_feature[0])
-    # labels = single_row_feature[:, 6] - 1
-    # formula
 
+    gs = int(single_row_feature[0])
     formula1 = "gs_"+str(gs)
-    
     formulas = [formula1]
     fweights_list = []
     for f in formulas:
@@ -475,27 +441,18 @@ def pracmln_inference_single_gym(formula_weight, single_row_feature, debug=True)
     for wclasses in fweights_list:
         for i in range(len(classweight)):
             classweight[i] = classweight[i] + wclasses[i] # taking total sum
-    # print ("Before normalize", classweight)
+
     # make all positive, ignore negative value and make it to zero
     minweight = min(classweight)
     for i in range(len(classweight)):
-        # if classweight[i] < 0:
-        #     classweight[i] = 0.0
         classweight[i] = classweight[i] + (-1 * minweight) # make it minimum to 0.
-    # print ("After normalize",classweight)
-    # print(fweights_list)
-    # print (formulas)
     classweight_combined = np.asarray(classweight) # make it numpy
 
-    
     # make it probability
     classweight_combined_forlogprob = classweight_combined + 1 # 1 to remove zero prob, smooting
     sumval = np.sum(classweight_combined_forlogprob)
     # if maxval > 0:
     classprobability = classweight_combined_forlogprob / sumval
-    # classprobability = np.asarray(classprobability)
-    # print(type(classprobability))
-    # classprobability = classprobability.astype(float)
     classprobability = np.log(classprobability)
     pred_label = np.argmax(classweight_combined)
     # print(pred_label, classweight_combined, classprobability)
@@ -542,7 +499,6 @@ def pracmln_inference(formula_weight, single_row_feature, robot="Gym"):
     
     return pred_label, classweight_combined, classprobability
 
-
 import re
 def getformatedweights(wfile):
     # fw = open(data_dir+'/learned_weights_formated.w', 'w')
@@ -563,10 +519,6 @@ def getformatedweights(wfile):
 
             label = label.replace('Topic("','')
             label = label.replace('",p)', '')
-
-
-            # print(weight, constraint, label)
-            # fw.write(str(weight)+"\t"+str(constraint)+"\t"+str(label)+"\n")
 
             label = int(label.replace('C', ''))
     
@@ -599,10 +551,6 @@ def getformatedweights_gym(wfile):
             label = label.replace('Topic("','')
             label = label.replace('",p)', '')
 
-
-            # print(weight, constraint, label)
-            # fw.write(str(weight)+"\t"+str(constraint)+"\t"+str(label)+"\n")
-
             label = int(label.replace('C', ''))
     
             if constraint not in formula_dict:
@@ -627,10 +575,7 @@ def dbformat():
         left_gs = int(single_row_feature[3])
         right_gs = int(single_row_feature[5])
         label = "C"+str(int(single_row_feature[-1]) - 1)
-        # print(arms_dist, left_gs, right_gs, label)
         fw_db.write('Has("arms_dist_'+str(arms_dist)+'","'+str(i)+'")\n')
-        # fw_db.write('Has("left_gs_'+str(left_gs)+'","'+str(i)+'")\n')
-        # fw_db.write('Has("right_gs_'+str(right_gs)+'","'+str(i)+'")\n')
         fw_db.write('Topic("'+str(label)+'","'+str(i)+'")\n')
     fw_db.close()
 
@@ -641,35 +586,3 @@ if __name__ == '__main__':
     print(len(fdict))
     for key in fdict:
         print(key, fdict[key])
-
-    # dbformat()
-    # dfile = "Taurus_motion_features.txt"
-    # # dfile = "Taurus_sim_motion_features.txt"
-    # # dfile = "Yumi_motion_features.txt"
-    # data1 = np.loadtxt(data_dir+"/"+dfile, delimiter=' ')
-    # data1 = data_preparation(dfile)
-
-    # dfile = "Yumi_motion_features.txt"
-    # data2 = data_preparation(dfile)
-
-
-    # print(len(data1), len(data2))
-
-
-
-    # count = int(len(data1)* 0.8)
-    # training_data = data1[:count]
-    # testing_data = data1[count:]
-    
-    # print(len(training_data), len(testing_data))
-
-    # surgeme_class = [0, 1, 2, 3, 4, 5, 6] # 7 surgeme class
-    # # mln_analysis(training_data, testing_data)
-    # model_classprob = mln_train(training_data)
-    # testacc, classacc, classweights = mln_inference(model_classprob, testing_data)
-    # print(testacc, classacc, len(classweights))
-
-
-
-
-
