@@ -1,0 +1,15 @@
+//word = { arms_dist_0, arms_dist_1, arms_dist_3 }
+
+//class = { C0, C1, C2, C3, C4, C5, C6 }
+
+//pages = { 1, 2, 3, 4, 5, 6, 7 }
+
+// Has indicates the words in each document
+Has(word, page)
+// Topic indicates the class of each page
+Topic(class, page)
+
+0.0 Has(+w, p) => Topic(+c, p)
+//0.0 Has(w, p) => Topic(c, p)
+//0.0 Has("arms_dist_1",p) => Topic("C1",p)
+//0.0    Has("arms_dist_0",p) => Topic("C1",p)

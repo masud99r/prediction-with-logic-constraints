@@ -1,0 +1,230 @@
+====Taurus 5000 frames training MLN=====
+
+/ predicate declarations
+Has(word,page)
+Topic(class,page)
+
+// formulas
+0.000000    Has(+w,p) => Topic(+c,p)
+=== LEARNING TEST: BPLL_CG ===
+loaded 1 database(s).
+Parameter:       Value:
+---------------  --------------------------------------------------------
+db               <pracmln.mln.database.Database object at 0x2ae17be21d50>
+method           BPLL_CG
+mln              <pracmln.mln.base.MLN object at 0x2ae17be218d0>
+multicore        True
+output_filename  /scratch/gilbreth/rahman64/logic_constraints/save.mln
+save             True
+verbose          True
+grounding...
+starting optimization with bfgs... {}
+
+Warning: Desired error not necessarily achieved due to precision loss.
+         Current function value: 50121.000872
+         Iterations: 199
+         Function evaluations: 243
+         Gradient evaluations: 233
+optimization done with bfgs...
+f-opt: -50121.0008720617261133
+function evaluations: 243
+warning flags: 2
+
+
+===========================
+LEARNT MARKOV LOGIC NETWORK
+===========================
+
+
+
+
+// predicate declarations
+Has(word,page)
+Topic(class,page)
+
+// formulas
+0.051634    Has("right_gs_2",p) => Topic("C5",p)
+-0.047510   Has("right_gs_2",p) => Topic("C4",p)
+1.921736    Has("right_gs_2",p) => Topic("C3",p)
+-0.061501   Has("right_gs_2",p) => Topic("C1",p)
+0.313176    Has("right_gs_2",p) => Topic("C2",p)
+-0.920717   Has("right_gs_2",p) => Topic("C0",p)
+-1.184738   Has("right_gs_2",p) => Topic("C-1",p)
+-0.964936   Has("left_right_gs_2_2",p) => Topic("C5",p)
+-0.925643   Has("left_right_gs_2_2",p) => Topic("C4",p)
+34.247106   Has("left_right_gs_2_2",p) => Topic("C3",p)
+-0.672341   Has("left_right_gs_2_2",p) => Topic("C1",p)
+-1.132014   Has("left_right_gs_2_2",p) => Topic("C2",p)
+1.531096    Has("left_right_gs_2_2",p) => Topic("C0",p)
+1.980903    Has("left_right_gs_2_2",p) => Topic("C-1",p)
+0.092869    Has("left_gs_2",p) => Topic("C5",p)
+0.057631    Has("left_gs_2",p) => Topic("C4",p)
+1.905305    Has("left_gs_2",p) => Topic("C3",p)
+0.112722    Has("left_gs_2",p) => Topic("C1",p)
+0.220479    Has("left_gs_2",p) => Topic("C2",p)
+-1.296881   Has("left_gs_2",p) => Topic("C0",p)
+-1.193156   Has("left_gs_2",p) => Topic("C-1",p)
+1.633744    Has("left_right_gs_1_4",p) => Topic("C5",p)
+0.845253    Has("left_right_gs_1_4",p) => Topic("C4",p)
+-1.565198   Has("left_right_gs_1_4",p) => Topic("C3",p)
+0.756867    Has("left_right_gs_1_4",p) => Topic("C1",p)
+0.550172    Has("left_right_gs_1_4",p) => Topic("C2",p)
+2.619232    Has("left_right_gs_1_4",p) => Topic("C0",p)
+0.377096    Has("left_right_gs_1_4",p) => Topic("C-1",p)
+-0.365861   Has("arms_dist_2",p) => Topic("C5",p)
+-0.755170   Has("arms_dist_2",p) => Topic("C4",p)
+0.337831    Has("arms_dist_2",p) => Topic("C3",p)
+0.013780    Has("arms_dist_2",p) => Topic("C1",p)
+0.383525    Has("arms_dist_2",p) => Topic("C2",p)
+-0.179681   Has("arms_dist_2",p) => Topic("C0",p)
+-0.469433   Has("arms_dist_2",p) => Topic("C-1",p)
+0.874993    Has("left_right_gs_4_1",p) => Topic("C5",p)
+0.592180    Has("left_right_gs_4_1",p) => Topic("C4",p)
+-1.570720   Has("left_right_gs_4_1",p) => Topic("C3",p)
+0.504336    Has("left_right_gs_4_1",p) => Topic("C1",p)
+0.497959    Has("left_right_gs_4_1",p) => Topic("C2",p)
+3.714874    Has("left_right_gs_4_1",p) => Topic("C0",p)
+0.008478    Has("left_right_gs_4_1",p) => Topic("C-1",p)
+-0.387656   Has("left_right_gs_1_1",p) => Topic("C5",p)
+-0.294629   Has("left_right_gs_1_1",p) => Topic("C4",p)
+0.362402    Has("left_right_gs_1_1",p) => Topic("C3",p)
+-0.334498   Has("left_right_gs_1_1",p) => Topic("C1",p)
+-0.696560   Has("left_right_gs_1_1",p) => Topic("C2",p)
+0.560208    Has("left_right_gs_1_1",p) => Topic("C0",p)
+1.553883    Has("left_right_gs_1_1",p) => Topic("C-1",p)
+0.696524    Has("left_right_gs_1_2",p) => Topic("C5",p)
+0.597379    Has("left_right_gs_1_2",p) => Topic("C4",p)
+-1.302712   Has("left_right_gs_1_2",p) => Topic("C3",p)
+0.583388    Has("left_right_gs_1_2",p) => Topic("C1",p)
+0.958066    Has("left_right_gs_1_2",p) => Topic("C2",p)
+-0.275828   Has("left_right_gs_1_2",p) => Topic("C0",p)
+-0.539848   Has("left_right_gs_1_2",p) => Topic("C-1",p)
+0.107190    Has("arms_dist_1",p) => Topic("C5",p)
+0.365380    Has("arms_dist_1",p) => Topic("C4",p)
+0.749439    Has("arms_dist_1",p) => Topic("C3",p)
+-0.384055   Has("arms_dist_1",p) => Topic("C1",p)
+-0.738164   Has("arms_dist_1",p) => Topic("C2",p)
+-0.179211   Has("arms_dist_1",p) => Topic("C0",p)
+-0.514096   Has("arms_dist_1",p) => Topic("C-1",p)
+-0.196421   Has("arms_dist_0",p) => Topic("C5",p)
+0.031716    Has("arms_dist_0",p) => Topic("C4",p)
+1.031971    Has("arms_dist_0",p) => Topic("C3",p)
+-0.005533   Has("arms_dist_0",p) => Topic("C1",p)
+2.944731    Has("arms_dist_0",p) => Topic("C2",p)
+0.045034    Has("arms_dist_0",p) => Topic("C0",p)
+1.477104    Has("arms_dist_0",p) => Topic("C-1",p)
+-0.607147   Has("right_gs_1",p) => Topic("C5",p)
+-0.586908   Has("right_gs_1",p) => Topic("C4",p)
+-1.777219   Has("right_gs_1",p) => Topic("C3",p)
+-0.555758   Has("right_gs_1",p) => Topic("C1",p)
+-0.778433   Has("right_gs_1",p) => Topic("C2",p)
+1.381350    Has("right_gs_1",p) => Topic("C0",p)
+0.855819    Has("right_gs_1",p) => Topic("C-1",p)
+0.692610    Has("left_right_gs_2_1",p) => Topic("C5",p)
+0.657372    Has("left_right_gs_2_1",p) => Topic("C4",p)
+-1.093401   Has("left_right_gs_2_1",p) => Topic("C3",p)
+0.712464    Has("left_right_gs_2_1",p) => Topic("C1",p)
+0.820220    Has("left_right_gs_2_1",p) => Topic("C2",p)
+-0.697140   Has("left_right_gs_2_1",p) => Topic("C0",p)
+-0.593415   Has("left_right_gs_2_1",p) => Topic("C-1",p)
+-0.051957   Has("left_right_gs_4_2",p) => Topic("C5",p)
+0.415665    Has("left_right_gs_4_2",p) => Topic("C4",p)
+33.610609   Has("left_right_gs_4_2",p) => Topic("C3",p)
+0.456593    Has("left_right_gs_4_2",p) => Topic("C1",p)
+0.047317    Has("left_right_gs_4_2",p) => Topic("C2",p)
+-1.885358   Has("left_right_gs_4_2",p) => Topic("C0",p)
+2.395755    Has("left_right_gs_4_2",p) => Topic("C-1",p)
+0.770115    Has("right_gs_4",p) => Topic("C5",p)
+-0.018376   Has("right_gs_4",p) => Topic("C4",p)
+2.752948    Has("right_gs_4",p) => Topic("C3",p)
+-0.106762   Has("right_gs_4",p) => Topic("C1",p)
+-0.313457   Has("right_gs_4",p) => Topic("C2",p)
+1.755603    Has("right_gs_4",p) => Topic("C0",p)
+-0.486533   Has("right_gs_4",p) => Topic("C-1",p)
+-0.728260   Has("left_right_gs_2_4",p) => Topic("C5",p)
+0.205129    Has("left_right_gs_2_4",p) => Topic("C4",p)
+36.799994   Has("left_right_gs_2_4",p) => Topic("C3",p)
+0.127420    Has("left_right_gs_2_4",p) => Topic("C1",p)
+0.165925    Has("left_right_gs_2_4",p) => Topic("C2",p)
+-0.304640   Has("left_right_gs_2_4",p) => Topic("C0",p)
+2.143143    Has("left_right_gs_2_4",p) => Topic("C-1",p)
+0.070420    Has("left_gs_4",p) => Topic("C5",p)
+-0.212394   Has("left_gs_4",p) => Topic("C4",p)
+2.452149    Has("left_gs_4",p) => Topic("C3",p)
+-0.300238   Has("left_gs_4",p) => Topic("C1",p)
+-0.306615   Has("left_gs_4",p) => Topic("C2",p)
+2.910300    Has("left_gs_4",p) => Topic("C0",p)
+-0.796096   Has("left_gs_4",p) => Topic("C-1",p)
+-0.192115   Has("left_gs_1",p) => Topic("C5",p)
+-0.309481   Has("left_gs_1",p) => Topic("C4",p)
+-1.279520   Has("left_gs_1",p) => Topic("C3",p)
+-0.371404   Has("left_gs_1",p) => Topic("C1",p)
+-0.216525   Has("left_gs_1",p) => Topic("C2",p)
+-0.037901   Has("left_gs_1",p) => Topic("C0",p)
+1.049719    Has("left_gs_1",p) => Topic("C-1",p)
+
+
+All test finished after 4695.5127630233765 secs
+
+
+=====Gym 5000 frames, MLN training===
+
+
+// predicate declarations
+Has(word,page)
+Topic(class,page)
+
+// formulas
+0.000000    Has(+w,p) => Topic(+c,p)
+=== LEARNING TEST: BPLL_CG ===
+loaded 1 database(s).
+Parameter:       Value:
+---------------  --------------------------------------------------------
+db               <pracmln.mln.database.Database object at 0x2b49040b8910>
+method           BPLL_CG
+mln              <pracmln.mln.base.MLN object at 0x2b49040b88d0>
+multicore        True
+output_filename  /scratch/gilbreth/rahman64/logic_constraints/save.mln
+save             True
+verbose          True
+grounding...
+starting optimization with bfgs... {}
+
+Optimization terminated successfully.      
+         Current function value: 14728.720558
+         Iterations: 36
+         Function evaluations: 46
+         Gradient evaluations: 46
+optimization done with bfgs...
+f-opt: -14728.7205577003333019
+function evaluations: 46
+warning flags: 0
+
+
+===========================
+LEARNT MARKOV LOGIC NETWORK
+===========================
+
+
+
+
+// predicate declarations
+Has(word,page)
+Topic(class,page)
+
+// formulas
+4.805024    Has("gs_1",p) => Topic("C1",p)
+-1.496134   Has("gs_1",p) => Topic("C2",p)
+-0.741074   Has("gs_1",p) => Topic("C0",p)
+-1.714654   Has("gs_1",p) => Topic("C3",p)
+-2.710705   Has("gs_0",p) => Topic("C1",p)
+0.284734    Has("gs_0",p) => Topic("C2",p)
+-0.205983   Has("gs_0",p) => Topic("C0",p)
+-0.214351   Has("gs_0",p) => Topic("C3",p)
+0.302034    Has("gs_2",p) => Topic("C1",p)
+0.888824    Has("gs_2",p) => Topic("C2",p)
+3.507075    Has("gs_2",p) => Topic("C0",p)
+0.281146    Has("gs_2",p) => Topic("C3",p)
+
+
+All test finished after 200.75082683563232 secs
