@@ -1,5 +1,5 @@
 # Sequential-Prediction-with-Logic-Constraints
-Code for paper: Sequential Prediction with Logic Constraints
+Code for paper: Sequential Prediction with Logic Constraints for Surgical Robotic Activity Recognition
 
 ## File directory setup
 
